@@ -3,4 +3,12 @@ const fact = (x) => {
   return x * fact(x - 1);
 };
 
-console.log(fact(3));
+// console.log(fact(3));
+
+const sum = (array) => {
+  if (array.length <= 0) return 0;
+  console.log(array);
+  return array[0] + sum(array.slice(1));
+};
+
+console.log(sum([2, 4, 5]));

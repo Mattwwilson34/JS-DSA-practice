@@ -19,6 +19,7 @@ var BinarySearchTree = /** @class */ (function () {
     function BinarySearchTree(head) {
         this.head = head || null;
     }
+    // recursive function to add new nodes to tree
     BinarySearchTree.prototype.insert = function (node, value) {
         if (node === void 0) { node = this.head; }
         if (node === null) {
@@ -43,4 +44,72 @@ rootNode.right = new TreeNode(60);
 var BSTree = new BinarySearchTree(rootNode);
 BSTree.insert(BSTree.head, 30);
 BSTree.insert(BSTree.head, 20);
+BSTree.insert(BSTree.head, 70);
+BSTree.insert(BSTree.head, 90);
+BSTree.insert(BSTree.head, 40);
+BSTree.insert(BSTree.head, 25);
+BSTree.insert(BSTree.head, 32);
+BSTree.insert(BSTree.head, 39);
+BSTree.insert(BSTree.head, 18);
 console.log(BSTree);
+var counter = 0;
+function recursion(node) {
+    console.log('iteration', counter, 'node: ', node === null || node === void 0 ? void 0 : node.data);
+    if (node === null) {
+        return node;
+    }
+    else if (node.left === null) {
+        return node;
+    }
+    else {
+        counter += 1;
+        recursion(node.left);
+    }
+    return null;
+}
+recursion(BSTree.head);
+function inOrderTraversal(rootNode) {
+    var res = [];
+    function inorder(root) {
+        if (root) {
+            inorder(root.left);
+            res.push(root.data);
+            inorder(root.right);
+        }
+    }
+    if (rootNode) {
+        inorder(rootNode);
+    }
+    return res;
+}
+function preOrderTraversal(rootNode) {
+    var res = [];
+    function inorder(root) {
+        if (root) {
+            res.push(root.data);
+            inorder(root.left);
+            inorder(root.right);
+        }
+    }
+    if (rootNode) {
+        inorder(rootNode);
+    }
+    return res;
+}
+function postOrderTraversal(rootNode) {
+    var res = [];
+    function inorder(root) {
+        if (root) {
+            inorder(root.left);
+            inorder(root.right);
+            res.push(root.data);
+        }
+    }
+    if (rootNode) {
+        inorder(rootNode);
+    }
+    return res;
+}
+console.log(inOrderTraversal(BSTree.head));
+console.log(preOrderTraversal(BSTree.head));
+console.log(postOrderTraversal(BSTree.head));

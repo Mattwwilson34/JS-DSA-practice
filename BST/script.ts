@@ -53,6 +53,90 @@ const BSTree = new BinarySearchTree(rootNode);
 
 BSTree.insert(BSTree.head, 30)
 BSTree.insert(BSTree.head, 20)
+BSTree.insert(BSTree.head, 70)
+BSTree.insert(BSTree.head, 90)
+BSTree.insert(BSTree.head, 40)
+BSTree.insert(BSTree.head, 25)
+BSTree.insert(BSTree.head, 32)
+BSTree.insert(BSTree.head, 39)
+BSTree.insert(BSTree.head, 18)
 
 
-console.log(BSTree) 
+console.log(BSTree)
+
+let counter: number = 0;
+
+function recursion(node: TreeNode | null): TreeNode | null {
+
+	console.log('iteration', counter, 'node: ', node?.data);
+
+	if (node === null) {
+		return node
+	}
+	else if (node.left === null) {
+		return node
+	}
+	else {
+		counter += 1;
+		recursion(node.left)
+	}
+	return null
+}
+
+
+
+recursion(BSTree.head);
+
+function inOrderTraversal(rootNode: TreeNode | null): number[] {
+	let res: number[] = [];
+
+	function inorder(root: TreeNode | null) {
+		if (root) {
+			inorder(root.left)
+			res.push(root.data)
+			inorder(root.right)
+		}
+	}
+
+	if (rootNode) {
+		inorder(rootNode)
+	}
+	return res
+}
+function preOrderTraversal(rootNode: TreeNode | null): number[] {
+	let res: number[] = [];
+
+	function inorder(root: TreeNode | null) {
+		if (root) {
+			res.push(root.data)
+			inorder(root.left)
+			inorder(root.right)
+		}
+	}
+
+	if (rootNode) {
+		inorder(rootNode)
+	}
+	return res
+}
+function postOrderTraversal(rootNode: TreeNode | null): number[] {
+	let res: number[] = [];
+
+	function inorder(root: TreeNode | null) {
+		if (root) {
+			inorder(root.left)
+			inorder(root.right)
+			res.push(root.data)
+		}
+	}
+
+	if (rootNode) {
+		inorder(rootNode)
+	}
+	return res
+}
+
+console.log(inOrderTraversal(BSTree.head))
+console.log(preOrderTraversal(BSTree.head))
+console.log(postOrderTraversal(BSTree.head))
+

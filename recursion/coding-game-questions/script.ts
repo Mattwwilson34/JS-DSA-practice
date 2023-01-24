@@ -1,3 +1,4 @@
+console.log('why is this not working')
 // recursive function
 function sumRange(n: number): number {
 	// base case
@@ -67,3 +68,22 @@ function factIterative(n: number): number {
 }
 
 // next tast is # 4 and can be found at https://www.codingame.com/playgrounds/5422/js-interview-prep-recursion// next tast is # 4 and can be found at https://www.codingame.com/playgrounds/5422/js-interview-prep-recursion
+
+function all(arr: number[], callback: (num: number) => boolean): boolean {
+	let copy: number[] = [...arr]
+	// base case
+	if (arr.length === 0) return true
+
+	// recursive case
+	if (callback(copy[0])) {
+		copy.shift()
+		return all(copy, callback)
+	}
+	else {
+		return false
+	}
+}
+
+const allAreLessThanSeven = all([1, 2, 9], function(num) {
+	return num < 7;
+});

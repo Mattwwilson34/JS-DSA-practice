@@ -1,4 +1,5 @@
 "use strict";
+console.log('why is this not working');
 // recursive function
 function sumRange(n) {
     // base case
@@ -56,4 +57,20 @@ function factIterative(n) {
     return n;
 }
 // next tast is # 4 and can be found at https://www.codingame.com/playgrounds/5422/js-interview-prep-recursion// next tast is # 4 and can be found at https://www.codingame.com/playgrounds/5422/js-interview-prep-recursion
+function all(arr, callback) {
+    // base case
+    if (arr.length === 0)
+        return true;
+    // recursive case
+    if (callback(arr[0])) {
+        return all(arr.slice(0, 1), callback);
+    }
+    else {
+        return false;
+    }
+}
+const allAreLessThanSeven = all([1, 2, 9], function (num) {
+    return num < 7;
+});
+console.log(allAreLessThanSeven);
 //# sourceMappingURL=script.js.map

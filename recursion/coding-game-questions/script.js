@@ -58,19 +58,29 @@ function factIterative(n) {
 }
 // next tast is # 4 and can be found at https://www.codingame.com/playgrounds/5422/js-interview-prep-recursion// next tast is # 4 and can be found at https://www.codingame.com/playgrounds/5422/js-interview-prep-recursion
 function all(arr, callback) {
+    let copy = [...arr];
     // base case
     if (arr.length === 0)
         return true;
     // recursive case
-    if (callback(arr[0])) {
-        return all(arr.slice(0, 1), callback);
+    if (callback(copy[0])) {
+        copy.shift();
+        return all(copy, callback);
     }
     else {
         return false;
     }
 }
-const allAreLessThanSeven = all([1, 2, 9], function (num) {
-    return num < 7;
-});
-console.log(allAreLessThanSeven);
+// Recursive solution
+function productOfArray(arr) {
+    let copy = [...arr];
+    // base case
+    if (arr.length === 0)
+        return 1;
+    // recursive case
+    copy.shift();
+    let total = arr[0] * productOfArray(copy);
+    return total;
+}
+console.log(productOfArray([1, 2, 3, 4, 5]));
 //# sourceMappingURL=script.js.map

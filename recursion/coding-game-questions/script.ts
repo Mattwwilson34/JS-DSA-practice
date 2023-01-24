@@ -1,4 +1,3 @@
-console.log('why is this not working')
 // recursive function
 function sumRange(n: number): number {
 	// base case
@@ -84,6 +83,16 @@ function all(arr: number[], callback: (num: number) => boolean): boolean {
 	}
 }
 
-const allAreLessThanSeven = all([1, 2, 9], function(num) {
-	return num < 7;
-});
+// Recursive solution
+function productOfArray(arr: number[]): number {
+	let copy: number[] = [...arr]
+	// base case
+	if (arr.length === 0) return 1
+
+	// recursive case
+	copy.shift()
+	let total: number = arr[0] * productOfArray(copy)
+
+	return total
+}
+

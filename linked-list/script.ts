@@ -112,6 +112,40 @@ class LinkedList<Type> {
 		}
 		return false
 	}
+	public find(value: number): number {
+		let currIndex = 0;
+		if (this.head) {
+			let currNode = this.head;
+			let currVal = currNode.val
+
+			if (currVal === value) {
+				return currIndex
+			}
+
+			while (currNode.next !== null) {
+				if (currVal === value) {
+					return currIndex
+				}
+				currNode = currNode.next
+				currVal = currNode.val
+				currIndex += 1;
+			}
+		}
+		return currIndex
+	}
+
+	public toString(): string {
+		let nodesValues = []
+		if (this.head) {
+			let currNode = this.head
+			nodesValues.push(`(${currNode.val})`)
+			while (currNode.next !== null) {
+				currNode = currNode.next
+				nodesValues.push(`(${currNode.val})`)
+			}
+		}
+		return nodesValues.join('=>')
+	}
 }
 
 
@@ -134,4 +168,4 @@ const list = new LinkedList(head)
 const list2 = new LinkedList(new ListNode(100))
 
 list.head = head;
-console.log(list.containes(6))
+console.log(list.toString())

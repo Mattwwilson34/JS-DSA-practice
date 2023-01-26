@@ -95,6 +95,37 @@ class LinkedList {
         }
         return false;
     }
+    find(value) {
+        let currIndex = 0;
+        if (this.head) {
+            let currNode = this.head;
+            let currVal = currNode.val;
+            if (currVal === value) {
+                return currIndex;
+            }
+            while (currNode.next !== null) {
+                if (currVal === value) {
+                    return currIndex;
+                }
+                currNode = currNode.next;
+                currVal = currNode.val;
+                currIndex += 1;
+            }
+        }
+        return currIndex;
+    }
+    toString() {
+        let nodesValues = [];
+        if (this.head) {
+            let currNode = this.head;
+            nodesValues.push(`(${currNode.val})`);
+            while (currNode.next !== null) {
+                currNode = currNode.next;
+                nodesValues.push(`(${currNode.val})`);
+            }
+        }
+        return nodesValues.join('=>');
+    }
 }
 const head = new ListNode(1);
 const node2 = new ListNode(2);
@@ -112,4 +143,4 @@ node6.next = node7;
 const list = new LinkedList(head);
 const list2 = new LinkedList(new ListNode(100));
 list.head = head;
-console.log(list.containes(6));
+console.log(list.toString());

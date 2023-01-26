@@ -40,6 +40,19 @@ class LinkedList<Type> {
 		newHead.next = this.head;
 		this.head = newHead;
 	}
+
+	public size(): number {
+		let count = 0
+		if (this.head) {
+			count += 1;
+			let currentNode = this.head
+			while (currentNode.next !== null) {
+				currentNode = currentNode.next
+				count += 1;
+			}
+		}
+		return count
+	}
 }
 
 
@@ -61,8 +74,3 @@ node6.next = node7
 const list = new LinkedList(head)
 
 list.head = head;
-
-const list2 = new LinkedList()
-
-list.prepend()
-console.log(list)

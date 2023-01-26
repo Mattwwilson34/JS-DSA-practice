@@ -53,6 +53,35 @@ class LinkedList<Type> {
 		}
 		return count
 	}
+
+	public getHead(): ListNode<Type> | null {
+		if (!this.head) return null
+		return this.head
+	}
+
+	public tail(): ListNode<Type> | null {
+		if (!this.head) return null
+		if (!this.head.next) return this.head
+		let currentNode = this.head
+		while (currentNode.next !== null) {
+			currentNode = currentNode.next
+		}
+		return currentNode
+	}
+
+	public atIndex(index: number): ListNode<Type> | null {
+		if (!this.head) return this.head
+
+		let currentNode: ListNode<Type> | null = this.head
+
+		while (index > 0) {
+			if (currentNode) {
+				currentNode = currentNode.next
+				index -= 1;
+			}
+		}
+		return currentNode
+	}
 }
 
 
@@ -72,5 +101,7 @@ node5.next = node6
 node6.next = node7
 
 const list = new LinkedList(head)
+const list2 = new LinkedList(new ListNode(100))
 
 list.head = head;
+console.log(list.atIndex(3))

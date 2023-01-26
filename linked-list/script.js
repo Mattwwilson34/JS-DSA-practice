@@ -43,6 +43,34 @@ class LinkedList {
         }
         return count;
     }
+    getHead() {
+        if (!this.head)
+            return null;
+        return this.head;
+    }
+    tail() {
+        if (!this.head)
+            return null;
+        if (!this.head.next)
+            return this.head;
+        let currentNode = this.head;
+        while (currentNode.next !== null) {
+            currentNode = currentNode.next;
+        }
+        return currentNode;
+    }
+    atIndex(index) {
+        if (!this.head)
+            return this.head;
+        let currentNode = this.head;
+        while (index > 0) {
+            if (currentNode) {
+                currentNode = currentNode.next;
+                index -= 1;
+            }
+        }
+        return currentNode;
+    }
 }
 const head = new ListNode(1);
 const node2 = new ListNode(2);
@@ -58,4 +86,6 @@ node4.next = node5;
 node5.next = node6;
 node6.next = node7;
 const list = new LinkedList(head);
+const list2 = new LinkedList(new ListNode(100));
 list.head = head;
+console.log(list.atIndex(3));

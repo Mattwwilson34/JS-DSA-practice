@@ -1,5 +1,4 @@
 "use strict";
-console.log('why is this not working');
 // recursive function
 function sumRange(n) {
     // base case
@@ -82,5 +81,18 @@ function productOfArray(arr) {
     let total = arr[0] * productOfArray(copy);
     return total;
 }
-console.log(productOfArray([1, 2, 3, 4, 5]));
+// fibonacci sequence iterative
+function fib(num) {
+    let fibNumbers = [0, 1];
+    if (num === 0)
+        return fibNumbers;
+    for (let i = 1; i < num; i++) {
+        let prevNum = fibNumbers[i - 1];
+        let currNum = fibNumbers[i];
+        console.log(currNum, prevNum);
+        fibNumbers.push(prevNum + currNum);
+    }
+    return fibNumbers;
+}
+console.log(fib(10));
 //# sourceMappingURL=script.js.map

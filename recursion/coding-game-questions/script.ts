@@ -96,3 +96,22 @@ function productOfArray(arr: number[]): number {
 	return total
 }
 
+// fibonacci sequence iterative
+function fib(num: number): number[] {
+	let fibNumbers = [0, 1]
+
+	if (num === 0) return fibNumbers
+
+	for (let i = 1; i < num; i++) {
+		let prevNum = fibNumbers[i - 1];
+		let currNum = fibNumbers[i]
+		fibNumbers.push(prevNum + currNum)
+	}
+	return fibNumbers
+}
+
+function fibRecursive(num: number): number[] {
+	let fibNumbers = []
+	// base case	
+	if (num.length === num) return fibNumbers
+}

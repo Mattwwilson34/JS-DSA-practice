@@ -31,6 +31,15 @@ class LinkedList<Type> {
 		let newNode = new ListNode(value)
 		currentNode.next = newNode
 	}
+
+	public prepend(value: number = 100): void {
+		// handle empyt list
+		if (!this.head) this.head = new ListNode(value)
+
+		let newHead = new ListNode(value)
+		newHead.next = this.head;
+		this.head = newHead;
+	}
 }
 
 
@@ -55,6 +64,5 @@ list.head = head;
 
 const list2 = new LinkedList()
 
-list.append(100)
+list.prepend()
 console.log(list)
-

@@ -15,11 +15,21 @@ class LinkedList {
             this.head = new ListNode(value);
         }
         let currentNode = this.head;
+        // move to end of linked list
         while (currentNode.next !== null) {
             currentNode = currentNode.next;
         }
+        // create new node and add to tail of list
         let newNode = new ListNode(value);
         currentNode.next = newNode;
+    }
+    prepend(value = 100) {
+        // handle empyt list
+        if (!this.head)
+            this.head = new ListNode(value);
+        let newHead = new ListNode(value);
+        newHead.next = this.head;
+        this.head = newHead;
     }
 }
 const head = new ListNode(1);
@@ -38,5 +48,5 @@ node6.next = node7;
 const list = new LinkedList(head);
 list.head = head;
 const list2 = new LinkedList();
-list.append(100);
+list.prepend();
 console.log(list);

@@ -59,6 +59,7 @@ class LinkedList<Type> {
 		return this.head
 	}
 
+
 	public tail(): ListNode<Type> | null {
 		if (!this.head) return null
 		if (!this.head.next) return this.head
@@ -89,6 +90,27 @@ class LinkedList<Type> {
 		if (secondToLastNode) {
 			secondToLastNode.next = null
 		}
+
+	}
+
+	public containes(value: number): boolean {
+		if (this.head) {
+			let currNode = this.head;
+			let currVal = currNode.val
+
+			if (currVal === value) {
+				return true
+			}
+
+			while (currNode.next !== null) {
+				if (currVal === value) {
+					return true
+				}
+				currNode = currNode.next
+				currVal = currNode.val
+			}
+		}
+		return false
 	}
 }
 
@@ -112,5 +134,4 @@ const list = new LinkedList(head)
 const list2 = new LinkedList(new ListNode(100))
 
 list.head = head;
-list.pop()
-console.log(list)
+console.log(list.containes(6))

@@ -78,6 +78,23 @@ class LinkedList {
             secondToLastNode.next = null;
         }
     }
+    containes(value) {
+        if (this.head) {
+            let currNode = this.head;
+            let currVal = currNode.val;
+            if (currVal === value) {
+                return true;
+            }
+            while (currNode.next !== null) {
+                if (currVal === value) {
+                    return true;
+                }
+                currNode = currNode.next;
+                currVal = currNode.val;
+            }
+        }
+        return false;
+    }
 }
 const head = new ListNode(1);
 const node2 = new ListNode(2);
@@ -95,5 +112,4 @@ node6.next = node7;
 const list = new LinkedList(head);
 const list2 = new LinkedList(new ListNode(100));
 list.head = head;
-list.pop();
-console.log(list);
+console.log(list.containes(6));

@@ -71,6 +71,13 @@ class LinkedList {
         }
         return currentNode;
     }
+    pop() {
+        let size = this.size();
+        let secondToLastNode = this.atIndex(size - 2);
+        if (secondToLastNode) {
+            secondToLastNode.next = null;
+        }
+    }
 }
 const head = new ListNode(1);
 const node2 = new ListNode(2);
@@ -88,4 +95,5 @@ node6.next = node7;
 const list = new LinkedList(head);
 const list2 = new LinkedList(new ListNode(100));
 list.head = head;
-console.log(list.atIndex(3));
+list.pop();
+console.log(list);
